@@ -6,7 +6,7 @@ public class main extends JFrame{
     //se crea una ventana
     public main(){
         setTitle("Calculadora Visual");
-        setSize(1366, 768);
+        setSize(300, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);

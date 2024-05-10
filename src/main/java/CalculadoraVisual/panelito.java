@@ -9,16 +9,21 @@ public class panelito  extends JPanel{
         JButton normal = new JButton("Calculadora Normal");
         JButton cientifica = new JButton("Calculadora Cientifica");
         //se les da tamaño y posicion
-        normal.setBounds(500, 300, 300, 100);
-        cientifica.setBounds(500, 500, 300, 100);
+        normal.setBounds(50, 50, 200, 50);
+        cientifica.setBounds(50, 150, 200, 50);
         //se añaden al panel
         add(normal);
         add(cientifica);
 
         //se crea un evento para el boton "normal"
         normal.addActionListener(e -> {
-
+            CalculadoraNormal calculadoraNormal = new CalculadoraNormal();
+            calculadoraNormal.setVisible(true);
         });
+
+
+        //se crea un evento para el boton "cientifica"
+
 
 
     }

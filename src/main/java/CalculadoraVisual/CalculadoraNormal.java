@@ -15,6 +15,7 @@ public class CalculadoraNormal extends javax.swing.JFrame {
      */
     public CalculadoraNormal() {
         initComponents();
+
     }
 
     /**
@@ -50,13 +51,12 @@ public class CalculadoraNormal extends javax.swing.JFrame {
         btncambiodesigno = new javax.swing.JButton();
         btnfraccion = new javax.swing.JButton();
         btnSq = new javax.swing.JButton();
+        btnCientifica = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(600, 600));
-        setMinimumSize(new java.awt.Dimension(600, 600));
-        setPreferredSize(new java.awt.Dimension(600, 600));
+        setMinimumSize(new java.awt.Dimension(800, 600));
         setResizable(false);
-        setSize(new java.awt.Dimension(600, 600));
+        setSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(null);
         getContentPane().add(txtcalculadora);
         txtcalculadora.setBounds(21, 14, 750, 140);
@@ -268,71 +268,149 @@ public class CalculadoraNormal extends javax.swing.JFrame {
         getContentPane().add(btnSq);
         btnSq.setBounds(590, 420, 110, 50);
 
+        btnCientifica.setText("Calculadora Cientifica");
+        getContentPane().add(btnCientifica);
+        btnCientifica.setBounds(450, 170, 250, 40);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRetrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetrocederActionPerformed
         // TODO add your handling code here:
+        //eliminar el ultimo caracter
+        String cadena;
+        cadena = txtcalculadora.getText();
+        if(cadena.length()>0){
+            cadena = cadena.substring(0, cadena.length()-1);
+            txtcalculadora.setText(cadena);
+        }
+
+
     }//GEN-LAST:event_btnRetrocederActionPerformed
 
     private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
         // TODO add your handling code here:
+        //agregar el numero 5
+        txtcalculadora.setText(txtcalculadora.getText()+"5");
+
     }//GEN-LAST:event_btn5ActionPerformed
 
     private void btnCEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCEActionPerformed
         // TODO add your handling code here:
+        //limpiar la pantalla
+        txtcalculadora.setText("");
+
     }//GEN-LAST:event_btnCEActionPerformed
 
     private void btnCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCActionPerformed
         // TODO add your handling code here:
+        //limpiar la pantalla
+        txtcalculadora.setText("");
     }//GEN-LAST:event_btnCActionPerformed
 
     private void btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn7ActionPerformed
         // TODO add your handling code here:
+        //agregar el numero 7
+        txtcalculadora.setText(txtcalculadora.getText()+"7");
     }//GEN-LAST:event_btn7ActionPerformed
 
     private void btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn8ActionPerformed
         // TODO add your handling code here:
+        //agregar el numero 8
+        txtcalculadora.setText(txtcalculadora.getText()+"8");
+
     }//GEN-LAST:event_btn8ActionPerformed
 
     private void btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn9ActionPerformed
         // TODO add your handling code here:
+        //agregar el numero 9
+        txtcalculadora.setText(txtcalculadora.getText()+"9");
     }//GEN-LAST:event_btn9ActionPerformed
 
     private void btnPorcentajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPorcentajeActionPerformed
         // TODO add your handling code here:
+        //calcula el porcentaje
+
+
+
     }//GEN-LAST:event_btnPorcentajeActionPerformed
 
     private void btncambiodesignoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncambiodesignoActionPerformed
         // TODO add your handling code here:
+        //cambia el signo
+        String cadena;
+        Double num;
+        cadena = txtcalculadora.getText();
+        if(cadena.length()>0){
+            num = (-1)*Double.parseDouble(cadena);
+            txtcalculadora.setText(num.toString());
+        }
+
+
     }//GEN-LAST:event_btncambiodesignoActionPerformed
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
         // TODO add your handling code here:
+        //agregar el numero 4
+        txtcalculadora.setText(txtcalculadora.getText()+"4");
+
     }//GEN-LAST:event_btn4ActionPerformed
 
     private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
         // TODO add your handling code here:
+        //agregar el numero 6
+        txtcalculadora.setText(txtcalculadora.getText()+"6");
+
     }//GEN-LAST:event_btn6ActionPerformed
 
     private void btnDivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDivisionActionPerformed
         // TODO add your handling code here:
+        //agregar la division
+        String cadena;
+        cadena = txtcalculadora.getText();
+        if(cadena.length()>0){
+            cadena = cadena.substring(0, cadena.length()-1);
+            txtcalculadora.setText(cadena);
+
+
+        }
+
+
+
     }//GEN-LAST:event_btnDivisionActionPerformed
 
     private void btnfraccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfraccionActionPerformed
         // TODO add your handling code here:
+        //calcula la fraccion
+        String cadena;
+        Double num;
+        cadena = txtcalculadora.getText();
+        if(cadena.length()>0){
+            num = 1/(Double.parseDouble(cadena));
+            txtcalculadora.setText(num.toString());
+        }
+
     }//GEN-LAST:event_btnfraccionActionPerformed
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
         // TODO add your handling code here:
+        //agregar el numero 1
+        txtcalculadora.setText(txtcalculadora.getText()+"1");
+
     }//GEN-LAST:event_btn1ActionPerformed
 
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
         // TODO add your handling code here:
+        //agregar el numero 2
+        txtcalculadora.setText(txtcalculadora.getText()+"2");
+
     }//GEN-LAST:event_btn2ActionPerformed
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
         // TODO add your handling code here:
+        //agregar el numero 3
+        txtcalculadora.setText(txtcalculadora.getText()+"3");
+
     }//GEN-LAST:event_btn3ActionPerformed
 
     private void btnrestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrestaActionPerformed
@@ -411,6 +489,7 @@ public class CalculadoraNormal extends javax.swing.JFrame {
     private javax.swing.JButton btn9;
     private javax.swing.JButton btnC;
     private javax.swing.JButton btnCE;
+    private javax.swing.JButton btnCientifica;
     private javax.swing.JButton btnDivision;
     private javax.swing.JButton btnMultiplicacion;
     private javax.swing.JButton btnPorcentaje;
