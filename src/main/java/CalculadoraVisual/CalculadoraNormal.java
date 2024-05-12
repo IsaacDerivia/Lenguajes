@@ -8,6 +8,8 @@ package CalculadoraVisual;
  *
  * @author isaac
  */
+import net.objecthunter.exp4j.Expression;
+import net.objecthunter.exp4j.ExpressionBuilder;
 public class CalculadoraNormal extends javax.swing.JFrame {
 
     /**
@@ -269,10 +271,16 @@ public class CalculadoraNormal extends javax.swing.JFrame {
         btnSq.setBounds(590, 420, 110, 50);
 
         btnCientifica.setText("Calculadora Cientifica");
+        btnCientifica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCientificaActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnCientifica);
         btnCientifica.setBounds(450, 170, 250, 40);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRetrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetrocederActionPerformed
@@ -330,6 +338,13 @@ public class CalculadoraNormal extends javax.swing.JFrame {
     private void btnPorcentajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPorcentajeActionPerformed
         // TODO add your handling code here:
         //calcula el porcentaje
+        String cadena;
+        Double num;
+        cadena = txtcalculadora.getText();
+        if(cadena.length()>0){
+            num = Double.parseDouble(cadena)/100;
+            txtcalculadora.setText(num.toString());
+        }
 
 
 
@@ -369,11 +384,14 @@ public class CalculadoraNormal extends javax.swing.JFrame {
         String cadena;
         cadena = txtcalculadora.getText();
         if(cadena.length()>0){
-            cadena = cadena.substring(0, cadena.length()-1);
-            txtcalculadora.setText(cadena);
+            if(cadena.charAt(cadena.length()-1) != '/'){
+                txtcalculadora.setText(txtcalculadora.getText()+"/");
+            } else {
+                txtcalculadora.setText(cadena);
 
-
+            }
         }
+
 
 
 
@@ -415,31 +433,119 @@ public class CalculadoraNormal extends javax.swing.JFrame {
 
     private void btnrestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnrestaActionPerformed
         // TODO add your handling code here:
+        //agregar la resta
+        String cadena;
+        cadena = txtcalculadora.getText();
+        if(cadena.length()>0){
+            if(cadena.charAt(cadena.length()-1) != '-'){
+                txtcalculadora.setText(txtcalculadora.getText()+"-");
+            } else {
+                txtcalculadora.setText(cadena);
+
+            }
+        }
+
     }//GEN-LAST:event_btnrestaActionPerformed
 
     private void btnSqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSqActionPerformed
         // TODO add your handling code here:
+        //calcula la raiz cuadrada
+        try {
+            String input = "sqrt(" + txtcalculadora.getText() + ")";
+            Expression expression = new ExpressionBuilder(input).build();
+            double result = expression.evaluate();
+            txtcalculadora.setText(Double.toString(result));
+        } catch (Exception e) {
+            txtcalculadora.setText("Error");
+        }
     }//GEN-LAST:event_btnSqActionPerformed
 
     private void btn0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn0ActionPerformed
         // TODO add your handling code here:
+        //agregar el numero 0
+        txtcalculadora.setText(txtcalculadora.getText()+"0");
+
+
     }//GEN-LAST:event_btn0ActionPerformed
 
     private void btnPuntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPuntoActionPerformed
         // TODO add your handling code here:
+        //agregar el punto
+        String cadena;
+        cadena = txtcalculadora.getText();
+        if(cadena.length()>0){
+            if(cadena.charAt(cadena.length()-1) != '.'){
+                txtcalculadora.setText(txtcalculadora.getText()+".");
+            } else {
+                txtcalculadora.setText(cadena);
+
+            }
+        }
+
     }//GEN-LAST:event_btnPuntoActionPerformed
 
     private void btnMultiplicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMultiplicacionActionPerformed
         // TODO add your handling code here:
+        //agregar la multiplicacion
+        String cadena;
+        cadena = txtcalculadora.getText();
+        if(cadena.length()>0){
+            if(cadena.charAt(cadena.length()-1) != '*'){
+                txtcalculadora.setText(txtcalculadora.getText()+"*");
+            } else {
+                txtcalculadora.setText(cadena);
+
+            }
+        }
+
     }//GEN-LAST:event_btnMultiplicacionActionPerformed
 
     private void btnSumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSumaActionPerformed
         // TODO add your handling code here:
+        //agregar la suma
+        String cadena;
+        cadena = txtcalculadora.getText();
+        if(cadena.length()>0){
+            if(cadena.charAt(cadena.length()-1) != '+'){
+                txtcalculadora.setText(txtcalculadora.getText()+"+");
+            } else {
+                txtcalculadora.setText(cadena);
+
+            }
+        }
+
     }//GEN-LAST:event_btnSumaActionPerformed
 
     private void btnResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResultadoActionPerformed
         // TODO add your handling code here:
+        try {
+            String input = txtcalculadora.getText();
+            Expression expression = new ExpressionBuilder(input).build();
+            double result = expression.evaluate();
+            txtcalculadora.setText(Double.toString(result));
+        } catch (Exception e) {
+            txtcalculadora.setText("Error");
+        }
+
     }//GEN-LAST:event_btnResultadoActionPerformed
+
+    private void btnCientificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCientificaActionPerformed
+        // TODO add your handling code here:
+
+        CalculadoraCientifica calculadoraCientifica = new CalculadoraCientifica();
+        calculadoraCientifica.setVisible(true);
+        this.setVisible(false);
+
+
+
+
+
+    }//GEN-LAST:event_btnCientificaActionPerformed
+
+    //evento del boton de la calculadora cientifica
+    
+
+
 
     /**
      * @param args the command line arguments
