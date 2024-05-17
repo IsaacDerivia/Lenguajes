@@ -17,7 +17,9 @@ import java.util.logging.Logger;
  *
  * @author viejo
  */
+import java.util.Stack;
 public class CalculadoraCientifica extends JFrame {
+
 
     /**
      * Creates new form CalculadoraCientifica
@@ -25,6 +27,16 @@ public class CalculadoraCientifica extends JFrame {
     public CalculadoraCientifica() {
         initComponents();
     }
+
+    //pila para almacenar el historial
+    Stack<String> historial = new Stack<>();
+
+    //metodo para agregar al historial
+    public void agregarHistorial(String operacion){
+        historial.push(operacion);
+    }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -426,6 +438,8 @@ public class CalculadoraCientifica extends JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    //metodo para cada boton
+
     private void btnfraccionActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnfraccionActionPerformed
         // TODO add your handling code here:
         //calcular la fraccion del numero
@@ -480,6 +494,8 @@ public class CalculadoraCientifica extends JFrame {
         this.dispose();
         CalculadoraCientifica calculadoraCientifica = new CalculadoraCientifica();
         calculadoraCientifica.setVisible(false);
+        //se agrega al historial
+        agregarHistorial(txtCalculadora.getText());
 
 
 
@@ -489,11 +505,9 @@ public class CalculadoraCientifica extends JFrame {
 
     private void btnRetrocederActionPerformed(ActionEvent evt) {//GEN-FIRST:event_btnRetrocederActionPerformed
         // TODO add your handling code here:
-        //retrocede un caracter
-        String cadena = txtCalculadora.getText();
-        if (cadena.length() > 0) {
-            cadena = cadena.substring(0, cadena.length() - 1);
-            txtCalculadora.setText(cadena);
+        //retrocede a la ultima operacion guardada
+        if (!historial.isEmpty()) {
+            txtCalculadora.setText(historial.pop());
         }
 
     }//GEN-LAST:event_btnRetrocederActionPerformed
